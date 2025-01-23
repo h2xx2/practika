@@ -1,4 +1,4 @@
-
+import '../../components/feedbackcells/feedBackCells.css'
 interface FeedbackCellsProps {
     feedbackComment: string;
     img: string// Задаем тип для `feedbackComment`

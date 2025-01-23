@@ -14,7 +14,7 @@ import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 
 const drawerWidth = 180;
-const navItems = ['Главная страница', 'О нас', 'Контактная информация'];
+const navItems = ['Главная', 'Обучение', 'Диагностика'];
 
 export default function DrawerAppBar() {
     const [mobileOpen, setMobileOpen] = React.useState(false);
