@@ -1,4 +1,4 @@
-import './components/imgCompany.css'
+import "./imgCompany.css"
 
 interface LogoItem {
     name: string;
