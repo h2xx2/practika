@@ -2,7 +2,9 @@ import Button from "@mui/material/Button";
 import FeedbackCells from "../feedbackcells/FeedbackCells.tsx";
 import './Main.css'
 import Typography from "@mui/material/Typography";
-
+import LogoList from "../imgCompany/imgCompany.tsx"
+import { logos }  from "../../Data/dataImgComapnyPath.ts"
+import InteractiveChart from "../interacrriveGraphics/interactiveGraphics.tsx"
 
 export default  function Main(){
     return(
@@ -74,8 +76,11 @@ export default  function Main(){
                             </Typography>
                         </div>
                     </div>
-                    <div>
-                        <img src='src/' alt='' className='img-section' />
+                    <div className='image-container-comapany'>
+                        <LogoList logos={logos}></LogoList>
+                    </div>
+                    <div className='container-graphics'>
+                        <InteractiveChart></InteractiveChart>
                     </div>
                 </section>
 

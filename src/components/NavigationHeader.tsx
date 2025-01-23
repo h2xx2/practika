@@ -26,7 +26,7 @@ export default function DrawerAppBar() {
     const drawer = (
         <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center' }}>
             <Typography variant="h6" sx={{ my: 2 }}>
-                Result univercity
+                Result University
             </Typography>
             <Divider />
             <List>
@@ -70,7 +70,7 @@ export default function DrawerAppBar() {
                             color: '#1a1a1a'
                         }}
                     >
-                        Result univercity
+                        Result University
                     </Typography>
                     <Box sx={{ display: { xs: 'none', sm: 'flex' } }}>
                         {navItems.map((item) => (
