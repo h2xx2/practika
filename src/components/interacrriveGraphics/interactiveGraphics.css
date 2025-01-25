@@ -1,0 +1,13 @@
+.graph-main-div{
+    position: relative;
+    width: 800px;
+    margin: 0 auto;
+}
+.graph-hide-date{
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    bottom: 15%;
+    font-size: 29px;
+    font-weight: bold;
+}

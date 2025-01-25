@@ -1,12 +1,13 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { Chart, ChartData, ChartOptions, CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend, Plugin } from 'chart.js';
 import { Line } from 'react-chartjs-2';
+import './interactiveGraphics.css';
 
 // Регистрируем необходимые компоненты
 Chart.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend);
 
 const InteractiveChart: React.FC = () => {
-    const [date, setDate] = useState<string>('Июнь 2025');
+    const [date, setDate] = useState<string>('Янв 2025');
     const [mousePosition, setMousePosition] = useState<{ x: number | null; y: number | null }>({ x: null, y: null });
     const chartRef = useRef<Chart<'line', number[], string> | null>(null);
 
@@ -29,7 +30,7 @@ const InteractiveChart: React.FC = () => {
         }]
     };
 
-    // Кастомный плагин для отрисовки вертикальных линий и красной линии
+    // Кастомный плагин для отрисовки вертикальных линий, красной линии и горизонтальной полоски
     const gridLinesPlugin: Plugin<'line'> = {
         id: 'gridLines',
         afterDraw: (chart) => {
@@ -50,6 +51,16 @@ const InteractiveChart: React.FC = () => {
                 ctx.stroke();
                 ctx.restore();
             });
+
+            // Горизонтальная полоска снизу
+            ctx.save();
+            ctx.beginPath();
+            ctx.moveTo(xAxis.left, yAxis.bottom);
+            ctx.lineTo(xAxis.right, yAxis.bottom);
+            ctx.lineWidth = 2;
+            ctx.strokeStyle = 'rgba(0, 0, 0, 0.1)'; // Цвет горизонтальной полоски
+            ctx.stroke();
+            ctx.restore();
 
             // Красная вертикальная линия, которая следует за мышкой
             const { x } = mousePosition;
@@ -80,7 +91,7 @@ const InteractiveChart: React.FC = () => {
                     display: false, // Убираем сетку для оси X
                 },
                 ticks: {
-                    callback: (value, index) => {
+                    callback: (_value, index) => {
                         // Отображаем только 0, 3, 6, 9, 12, 15, 18
                         const displayValues = [0, 3, 6, 9, 12, 15, 18];
                         return displayValues.includes(index) ? index : '';
@@ -103,11 +114,12 @@ const InteractiveChart: React.FC = () => {
                 display: false, // Скрываем легенду
             },
         },
-        onHover: (event: any, chartElement: any) => {
+        onHover: (_event: any, chartElement: any) => {
             if (chartElement.length > 0) {
                 const index = chartElement[0].index;
-                const date = data.labels![index];
-                setDate(`${date} 2025`);
+                const month = data.labels![index];
+                const year = 2025 + Math.floor(index / 12); // Вычисляем год
+                setDate(`${month} ${year}`);
             }
         },
     };
@@ -125,8 +137,9 @@ const InteractiveChart: React.FC = () => {
             const points = chart.getElementsAtEventForMode(event.nativeEvent, 'nearest', { intersect: true }, true);
             if (points.length > 0) {
                 const index = points[0].index;
-                const date = data.labels![index];
-                setDate(`${date} 2025`);
+                const month = data.labels![index];
+                const year = 2025 + Math.floor(index / 12); // Вычисляем год
+                setDate(`${month} ${year}`);
             }
         }
     };
@@ -142,8 +155,8 @@ const InteractiveChart: React.FC = () => {
     }, []);
 
     return (
-        <div style={{ position: 'relative', width: '800px', margin: '0 auto' }}>
-            <div style={{ position: 'absolute', top: '10px', left: '10px', fontSize: '16px', fontWeight: 'bold' }}>
+        <div className='graph-main-div'>
+            <div className='graph-hide-date'>
                 {date}
             </div>
             <Line
