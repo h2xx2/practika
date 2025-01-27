@@ -9,6 +9,7 @@ import InteractiveChart from "../interacrriveGraphics/interactiveGraphics.tsx"
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 import React from "react"
+import ImgSlider from "../ImgSlider/ImgSlider.tsx";
 
 export default  function Main(){
     return(
@@ -174,11 +175,54 @@ export default  function Main(){
                             </a>
                         </div>
                     </div>
-                    <div>
-                        
+                    <ImgSlider></ImgSlider>
+                </section>
+                <section>
+                    <p>
+                        Не знаете с чего начать? <br/>
+                        Выберите, что вам подходит
+                    </p>
+                    <div className='start-container'>
+                        <div className='start-container-left'>
+                            <img src='src/assets/start-section/htmlcssicon.webp' className='small-img-start'/>
+                            <p className='text-start-container'>
+                            <strong className='big-text'>HTML CSS</strong><br/>
+                            Если вы еще не писали код, но хотите<br/>
+                            попробовать. Разработаете свой<br/>
+                            первый сайт за 2 недели (в вузе это<br/>
+                            изучают полгода).
+                            <a className='html-css-link'>
+                                <p>
+                                    Пройти бесплатно→
+                                </p>
+                            </a>
+                        </p>
+                        </div>
+                        <div className='start-container-right'>
+                            <img src='src/assets/start-section/diagnostic.webp' className='start-img'/>
+                        </div>
+                    </div>
+                    <div className='start-container'>
+                        <div className='start-container-left'>
+                        <img src='src/assets/start-section/diagnosticIcon.webp' className='small-img-start'/>
+                        <p className='text-start-container'>
+                            <strong className='big-text'>Диагностика</strong><br/>
+                            Если вы уже умеете писать код. За 90<br/>
+                            минут выявим ваши слабые и сильные<br/> стороны
+                            и подскажем, в каком<br/>
+                            направлении двигаться.
+                            <a className='diagnostic-link'>
+                                <p>
+                                    Подробнее→
+                                </p>
+                            </a>
+                        </p>
+                        </div>
+                        <div className='start-container-right'>
+                            <img src='src/assets/start-section/diagnostic.webp' className='start-img'/>
+                        </div>
                     </div>
                 </section>
-
 
             </main>
         </>
