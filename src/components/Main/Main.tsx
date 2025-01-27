@@ -102,10 +102,9 @@ export default  function Main(){
                     <div className='section-guarantee-right'>
                        <img src='src/assets/message/garanty.webp' className='img-garanty-logo' />
                     </div>
-
                 </section>
-                <section>
-                    <p className='paragraph-button'>
+                <section className='container-buttons-main'>
+                    <p className='paragraph-main-button'>
                         Вы можете проходить программу полностью или частями
                     </p>
                     <div className='buttons-container button-href'>
@@ -117,7 +116,7 @@ export default  function Main(){
                         </a>
                     </div >
                     <div className='buttons-container'>
-                        <div className='button-href'>
+                        <div className='button-href buttons-container'>
                             <a href='' className='button-link'>
                                 <img src='src/assets/button-img/junior-developer.webp' className='img-button'/>
                                 <p className='paragraph-button'>
@@ -125,7 +124,7 @@ export default  function Main(){
                                 </p>
                             </a>
                         </div>
-                        <div className='button-href'>
+                        <div className='button-href buttons-container'>
                             <a href='' className='button-link'>
                                 <img src='src/assets/button-img/middle-developer.webp' className='img-button'/>
                                 <p className='paragraph-button'>
@@ -135,7 +134,7 @@ export default  function Main(){
                         </div>
                     </div>
                     <div className='buttons-container'>
-                        <div className='button-href'>
+                        <div className='button-href buttons-container'>
                             <a href='' className='button-link'>
                                 <img src='src/assets/button-img/js.webp' className='img-button'/>
                                 <p className='paragraph-button'>
@@ -143,7 +142,7 @@ export default  function Main(){
                                 </p>
                             </a>
                         </div>
-                        <div className='two-button-href'>
+                        <div className='two-button-href buttons-container'>
                             <a href='' className='button-link'>
                                 <img src='src/assets/button-img/react.webp' className='img-button'/>
                                 <p className='paragraph-button'>
@@ -151,7 +150,7 @@ export default  function Main(){
                                 </p>
                             </a>
                         </div>
-                        <div className='button-href'>
+                        <div className='button-href buttons-container'>
                             <a href='' className='button-link'>
                                 <img src='src/assets/button-img/diagnostic.webp' className='img-button'/>
                                 <p className='paragraph-button'>
@@ -159,7 +158,7 @@ export default  function Main(){
                                 </p>
                             </a>
                         </div>
-                        <div className='button-href'>
+                        <div className='button-href buttons-container'>
                             <a href='' className='button-link'>
                                 <img src='src/assets/button-img/technologies.webp' className='img-button'/>
                                 <p className='paragraph-button'>
@@ -167,13 +166,16 @@ export default  function Main(){
                                 </p>
                             </a>
                         </div>
-                        <div className='button-href'>
-                            <a href='' className='button-link'>
+                        <div className='button-p-href buttons-container'>
+                            <a href='' className='button-p-link'>
                                 <p className='button-paragraph-link'>
-                                    Все курсы
+                                    Все курсы →
                                 </p>
                             </a>
                         </div>
+                    </div>
+                    <div>
+                        
                     </div>
                 </section>
 
