@@ -159,6 +159,7 @@
 .button-link{
     width: 100%;
     height: 100%;
+    transition: background-color 0.3s, border-color 0.3s; /* Плавный переход */
 }
 .button-p-link{
     width: 100%;
@@ -166,4 +167,137 @@
     display: flex;
     flex-direction: column-reverse;
     align-items: end;
+}
+.slider-img {
+    width: 500px;
+    margin: 0 auto;
+}
+
+.start-container{
+    display: flex;
+    background-color: #f5f5f4;
+    width: 85%;
+    margin: 0px auto 2% auto;
+    border-radius: 1.5rem;
+}
+.start-container-left{
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    width: 50%;
+}
+.start-container-right{
+    flex: 1.5;
+    width: 50%;
+}
+.start-img{
+    width: 100%;
+    margin-top: 30px;
+}
+.text-start-container{
+    text-align: left;
+    margin-left: 30px;
+}
+.small-img-start{
+    width: 10%;
+    margin: 7% auto 0 30px;
+}
+.big-text{
+    font-size: 2rem;
+    line-height: 50px;
+    margin: 0;
+}
+.diagnostic-link{
+    color: #996600;
+    line-height: 0;
+}
+.html-css-link{
+    color: #ea4e43;
+    line-height: 5px;
+}
+.diagnostic-link:hover{
+    color: #996600;
+}
+.html-css-link:hover{
+    color: #ea4e43;
+}
+.table-of-content{
+    text-align: left;
+    font-size: 2.3rem !important;
+    font-weight: 740;
+    width: 85%;
+    margin: 15% auto 4% auto;
+    line-height: 2.5rem;
+}
+.head-start{
+    display: flex;
+    flex-direction: row;
+    width: 92%;
+    margin: 0px auto;
+}
+.head-start-img{
+    width: 60%;
+    margin-top: 100px;
+}
+.head-title{
+    flex: 2;
+}
+.head-img{
+    flex: 1;
+    display: flex;
+    flex-direction: column-reverse;
+
+}
+.img-people{
+    width: 50%;
+}
+.img-div{
+    display: flex;
+    width: 85%;
+    margin: 0% auto;
+}
+.block-adventage{
+    width: 85%;
+    margin: 0% auto 3%;
+    display: flex;
+}
+.job-block{
+    display: flex;
+    width: 85%;
+    margin: 0% auto 3%;
+}
+.job-block-left{
+
+}
+.job-block-right{
+    padding-bottom: 0;
+    overflow: hidden;
+    position: relative;
+}
+.main-css-style{
+    width: 48%;
+    background-color: #f5f5f4;
+    margin: 0% auto;
+    border-radius: 1rem;
+}
+.img-job{
+    width: 100%;
+}
+.img-job-right{
+    position: absolute;
+    right: -30px;
+    bottom: -7px;
+}
+.h3-job-title{
+    text: left;
+}
+.button-href.active {
+    background-color: white; /* Белый фон */
+    border: 3px #f5f5f4 solid;
+    border-radius: 1.5rem/* Черная граница */
+}
+.two-button-href.active {
+    background-color: white; /* Белый фон */
+    border: 3px #f5f5f4 solid;
+    border-radius: 1.5rem/* Черная граница */
 }
