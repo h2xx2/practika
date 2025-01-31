@@ -10,6 +10,8 @@ import InteractiveChart from "../interacrriveGraphics/interactiveGraphics.tsx"
 // @ts-ignore
 import React from "react"
 import ImgSlider from "../ImgSlider/ImgSlider.tsx";
+import BlockAdventage from "../BlockAdventage/BlockAdventage.tsx";
+import ButtonSection from "../../ex.tsx";
 
 export default  function Main(){
     return(
@@ -178,10 +180,18 @@ export default  function Main(){
                     <ImgSlider></ImgSlider>
                 </section>
                 <section>
-                    <p>
-                        Не знаете с чего начать? <br/>
-                        Выберите, что вам подходит
-                    </p>
+                    <div className='head-start'>
+                        <div className='head-title'>
+                            <p className='table-of-content'>
+                                Не знаете с чего начать? <br/>
+                                Выберите, что вам подходит
+                            </p>
+                        </div>
+                        <div className='head-img'>
+                            <img src='src/assets/start-section/head-img.webp' className='head-start-img'/>
+                        </div>
+                    </div>
+
                     <div className='start-container'>
                         <div className='start-container-left'>
                             <img src='src/assets/start-section/htmlcssicon.webp' className='small-img-start'/>
@@ -220,6 +230,75 @@ export default  function Main(){
                         </div>
                         <div className='start-container-right'>
                             <img src='src/assets/start-section/diagnostic.webp' className='start-img'/>
+                        </div>
+                    </div>
+                </section>
+                <ButtonSection></ButtonSection>
+                <section>
+                    <p>
+                        76% наших выпускников устраиваются на работу в первые 3 месяца
+                    </p>
+                    <p>
+                        Остальные студенты устраиваются в течение 6 месяцев после выпуска на этапе «Джуниор», а на «Мидле» — во время обучения.
+                    </p>
+                    <p>
+                        Смотреть истории наших учеников→
+                    </p>
+                    <div className='img-div'>
+                        <img src='src/assets/confirmition/peoples-1.webp' className='img-people'/>
+                        <img src='src/assets/confirmition/peoples-2.webp' className='img-people'/>
+                    </div>
+                    <div>
+                        <div className='block-adventage'>
+                            <BlockAdventage textNumber='9.6' text='Средняя оценка обучения'/>
+                            <BlockAdventage textNumber='2000+' text='Студентов получили диплом'/>
+                            <BlockAdventage textNumber='140T' text='Средняя зарплата выпускника'/>
+                        </div>
+                        <div className='job-block'>
+                            <div className='main-css-style job-block-left'>
+                                <h3 className='h3-job-title'>
+                                    Яндекс, Роснефть, Мегафон
+                                </h3>
+                                <p>
+                                    И еще более 20 крупных отечественных и<br/>
+                                    зарубежных компаний наняли наших выпускников на<br/>
+                                    позиции junior и middle-разработчиков.
+                                </p>
+                                <img src='src/assets/confirmition/companies.webp' className='img-job'/>
+                            </div>
+                            <div className='main-css-style job-block-right'>
+                                <h3 className='h3-job-title'>
+                                    Студенты работают по всему миру
+                                </h3>
+                                <p>
+                                    Знания, полученные в Result, ценят не только на<br/>
+                                    российском рынке. Наши ученики работают и<br/>
+                                    заграницей, например, Павел Волков из Таллина.
+                                </p>
+                                <a>
+                                    Читать историю Павла→
+                                </a>
+                                <img src='src/assets/confirmition/hello-result.webp' className='img-job img-job-right'/>
+                            </div>
+                        </div>
+                        <div>
+                            <div>
+
+                            </div>
+                            <div>
+                                <div>
+
+                                </div>
+                                <div>
+
+                                </div>
+                                <div>
+
+                                </div>
+                                <div>
+
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </section>

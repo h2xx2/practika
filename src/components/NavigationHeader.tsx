@@ -12,11 +12,14 @@ import ListItemText from '@mui/material/ListItemText';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
+import {useNavigate} from "react-router-dom";
 
 const drawerWidth = 180;
 const navItems = ['Главная', 'Обучение', 'Диагностика'];
 
+
 export default function DrawerAppBar() {
+    const navigate = useNavigate();
     const [mobileOpen, setMobileOpen] = React.useState(false);
 
     const handleDrawerToggle = () => {
@@ -84,7 +87,8 @@ export default function DrawerAppBar() {
                         backgroundColor: '#1a1a1a',
                         margin: '0px 0px 0px 3%',
                         padding: '5px 20px',
-                        fontSize: '14px'}}>
+                        fontSize: '14px'}}
+                            onClick={() => navigate('/auth')}>
                         Войти
                     </Button>
                 </Toolbar>
