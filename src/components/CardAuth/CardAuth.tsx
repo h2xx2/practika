@@ -56,6 +56,8 @@ export default function CardAuth() {
         }, 3000);
     };
 
+
+
     // Функция для отправки данных на сервер
     const sendDataToServer = async (login: string, password: string) => {
         const response = await fetch('http://localhost:3000/user', {
