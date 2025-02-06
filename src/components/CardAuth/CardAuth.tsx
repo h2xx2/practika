@@ -63,6 +63,7 @@ export default function CardAuth() {
                 headers: {
                     "Content-Type": "application/json",
                 },
+                credentials: 'include', // Важная настройка!
                 body: JSON.stringify({ email: login, password }),
             });
 
