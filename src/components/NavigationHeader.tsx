@@ -59,7 +59,7 @@ export default function DrawerAppBar() {
                 headers: {
                     "Content-Type": "application/json",
                 },
-                credentials: "include", // Позволяет отправить куки с запросом
+                credentials: "include",
             });
 
             if (!response.ok) {
