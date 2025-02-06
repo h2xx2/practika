@@ -1,4 +1,5 @@
-import * as React from 'react';
+import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -12,19 +13,71 @@ import ListItemText from '@mui/material/ListItemText';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
-import {useNavigate} from "react-router-dom";
 
 const drawerWidth = 180;
-const navItems = ['Главная', 'Обучение', 'Диагностика'];
-
+const navItems = ['Главная', 'Обучение', 'Отзывы'];
 
 export default function DrawerAppBar() {
     const navigate = useNavigate();
-    const [mobileOpen, setMobileOpen] = React.useState(false);
+    const [mobileOpen, setMobileOpen] = useState(false);
+    const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false);
+
+    // Проверка refreshToken в localStorage при загрузке страницы
+    useEffect(() => {
+        const token = localStorage.getItem("refreshToken");
+        setIsAuthenticated(!!token); // Если токен есть, авторизован
+    }, []);
 
     const handleDrawerToggle = () => {
         setMobileOpen((prevState) => !prevState);
     };
+
+    // const sendDataToServer = async () => {
+    //     try {
+    //         const token = localStorage.getItem("refreshToken");
+    //         const response = await fetch("http://localhost:3000/api/logout", {
+    //             method: "POST",
+    //             headers: {
+    //                 "Content-Type": "application/json",
+    //             },
+    //             body: JSON.stringify({ token }),
+    //         });
+    //
+    //         if (!response.ok) {
+    //             const errorData = await response.json();
+    //             throw new Error(errorData.message || "Ошибка выхода из аккаунта");
+    //         }
+    //     } catch (error) {
+    //         console.error("Ошибка выхода из аккаунта:", error);
+    //     }
+    // };
+
+    const handleLogout = async () => {
+        try {
+            const response = await fetch("http://localhost:3000/api/logout", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                credentials: "include", // Позволяет отправить куки с запросом
+            });
+
+            if (!response.ok) {
+                const errorData = await response.json();
+                throw new Error(errorData.message || "Ошибка выхода из аккаунта");
+            }
+
+            // Удаляем токен из localStorage
+            localStorage.removeItem("refreshToken");
+
+            // Перенаправляем пользователя
+            window.location.href = "/";
+        } catch (error) {
+            console.error("Ошибка выхода из аккаунта:", error);
+        }
+    };
+
+
 
     const drawer = (
         <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center' }}>
@@ -61,8 +114,7 @@ export default function DrawerAppBar() {
                         edge="start"
                         onClick={handleDrawerToggle}
                         sx={{ display: { sm: 'none' } }}
-                    >
-                    </IconButton>
+                    ></IconButton>
                     <Typography
                         variant="h6"
                         component="div"
@@ -82,15 +134,41 @@ export default function DrawerAppBar() {
                             </Button>
                         ))}
                     </Box>
-                    <Button variant="contained" color="primary" sx={{borderRadius: '8px',
-                        justifyContent: 'center',
-                        backgroundColor: '#1a1a1a',
-                        margin: '0px 0px 0px 3%',
-                        padding: '5px 20px',
-                        fontSize: '14px'}}
-                            onClick={() => navigate('/auth')}>
-                        Войти
-                    </Button>
+
+                    {isAuthenticated ? (
+                        // Если пользователь авторизован, показываем кнопку "Выйти"
+                        <Button
+                            variant="contained"
+                            sx={{
+                                borderRadius: '8px',
+                                backgroundColor: '#fff', // Фон кнопки
+                                border: '1px solid black', // Чёрная граница
+                                color: '#1a1a1a', // Цвет текста
+                                marginLeft: '3%',
+                                padding: '5px 20px',
+                                fontSize: '14px'
+                            }}
+                            onClick={handleLogout}
+                        >
+                            Выйти
+                        </Button>
+                    ) : (
+                        // Если пользователь не авторизован, показываем кнопку "Войти"
+                        <Button
+                            variant="contained"
+                            color="primary"
+                            sx={{
+                                borderRadius: '8px',
+                                backgroundColor: '#1a1a1a',
+                                marginLeft: '3%',
+                                padding: '5px 20px',
+                                fontSize: '14px',
+                            }}
+                            onClick={() => navigate('/auth')}
+                        >
+                            Войти
+                        </Button>
+                    )}
                 </Toolbar>
             </AppBar>
             <nav>

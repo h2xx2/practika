@@ -9,7 +9,6 @@ import InteractiveChart from "../interacrriveGraphics/interactiveGraphics.tsx"
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 import React from "react"
-import ImgSlider from "../ImgSlider/ImgSlider.tsx";
 import BlockAdventage from "../BlockAdventage/BlockAdventage.tsx";
 import ButtonSection from "../../ex.tsx";
 
@@ -106,79 +105,8 @@ export default  function Main(){
                        <img src='src/assets/message/garanty.webp' className='img-garanty-logo' />
                     </div>
                 </section>
-                <section className='container-buttons-main'>
-                    <p className='paragraph-main-button'>
-                        Вы можете проходить программу полностью или частями
-                    </p>
-                    <div className='buttons-container button-href'>
-                        <a href='' className='button-link'>
-                            <img src='src/assets/button-img/frontend-developer.webp' className='img-button'/>
-                            <p className='paragraph-button'>
-                                Профессия frontend-разработчик
-                            </p>
-                        </a>
-                    </div >
-                    <div className='buttons-container'>
-                        <div className='button-href buttons-container'>
-                            <a href='' className='button-link'>
-                                <img src='src/assets/button-img/junior-developer.webp' className='img-button'/>
-                                <p className='paragraph-button'>
-                                    Джуниор
-                                </p>
-                            </a>
-                        </div>
-                        <div className='button-href buttons-container'>
-                            <a href='' className='button-link'>
-                                <img src='src/assets/button-img/middle-developer.webp' className='img-button'/>
-                                <p className='paragraph-button'>
-                                    Мидл
-                                </p>
-                            </a>
-                        </div>
-                    </div>
-                    <div className='buttons-container'>
-                        <div className='button-href buttons-container'>
-                            <a href='' className='button-link'>
-                                <img src='src/assets/button-img/js.webp' className='img-button'/>
-                                <p className='paragraph-button'>
-                                    Javascript
-                                </p>
-                            </a>
-                        </div>
-                        <div className='two-button-href buttons-container'>
-                            <a href='' className='button-link'>
-                                <img src='src/assets/button-img/react.webp' className='img-button'/>
-                                <p className='paragraph-button'>
-                                    React-разработчик
-                                </p>
-                            </a>
-                        </div>
-                        <div className='button-href buttons-container'>
-                            <a href='' className='button-link'>
-                                <img src='src/assets/button-img/diagnostic.webp' className='img-button'/>
-                                <p className='paragraph-button'>
-                                    Диагностика
-                                </p>
-                            </a>
-                        </div>
-                        <div className='button-href buttons-container'>
-                            <a href='' className='button-link'>
-                                <img src='src/assets/button-img/technologies.webp' className='img-button'/>
-                                <p className='paragraph-button'>
-                                    Технологии
-                                </p>
-                            </a>
-                        </div>
-                        <div className='button-p-href buttons-container'>
-                            <a href='' className='button-p-link'>
-                                <p className='button-paragraph-link'>
-                                    Все курсы →
-                                </p>
-                            </a>
-                        </div>
-                    </div>
-                    <ImgSlider></ImgSlider>
-                </section>
+                    <ButtonSection></ButtonSection>
+
                 <section>
                     <div className='head-start'>
                         <div className='head-title'>
@@ -192,7 +120,7 @@ export default  function Main(){
                         </div>
                     </div>
 
-                    <div className='start-container'>
+                    <div className='start-container-block'>
                         <div className='start-container-left'>
                             <img src='src/assets/start-section/htmlcssicon.webp' className='small-img-start'/>
                             <p className='text-start-container'>
@@ -212,7 +140,7 @@ export default  function Main(){
                             <img src='src/assets/start-section/diagnostic.webp' className='start-img'/>
                         </div>
                     </div>
-                    <div className='start-container'>
+                    <div className='start-container-block'>
                         <div className='start-container-left'>
                         <img src='src/assets/start-section/diagnosticIcon.webp' className='small-img-start'/>
                         <p className='text-start-container'>
@@ -233,7 +161,6 @@ export default  function Main(){
                         </div>
                     </div>
                 </section>
-                <ButtonSection></ButtonSection>
                 <section>
                     <p>
                         76% наших выпускников устраиваются на работу в первые 3 месяца
