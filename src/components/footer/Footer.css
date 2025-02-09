@@ -1,0 +1,24 @@
+.footer-container{
+    all: unset;
+    display: block;
+    width: 100%;
+    background-color: whitesmoke;
+}
+.columns{
+    display: flex;
+    margin: 0 auto;
+    justify-content: space-around;
+    padding: 0 15% 0 60px ;
+}
+.column{
+    justify-content: space-between;
+    text-align: left;
+    margin: 2em;
+}
+.text-row{
+    display: flex;
+    margin: 20px;
+}
+.column-row{
+    display: flex;
+}

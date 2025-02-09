@@ -32,26 +32,6 @@ export default function DrawerAppBar() {
         setMobileOpen((prevState) => !prevState);
     };
 
-    // const sendDataToServer = async () => {
-    //     try {
-    //         const token = localStorage.getItem("refreshToken");
-    //         const response = await fetch("http://localhost:3000/api/logout", {
-    //             method: "POST",
-    //             headers: {
-    //                 "Content-Type": "application/json",
-    //             },
-    //             body: JSON.stringify({ token }),
-    //         });
-    //
-    //         if (!response.ok) {
-    //             const errorData = await response.json();
-    //             throw new Error(errorData.message || "Ошибка выхода из аккаунта");
-    //         }
-    //     } catch (error) {
-    //         console.error("Ошибка выхода из аккаунта:", error);
-    //     }
-    // };
-
     const handleLogout = async () => {
         try {
             const response = await fetch("http://localhost:3000/api/logout", {
