@@ -1,5 +1,5 @@
 .main{
-    width: 100%;
+    width: 78%;
     margin: 0 auto;
 }
 
@@ -55,7 +55,9 @@
 }
 .horizontal {
     display: flex;
-    flex-wrap: wrap; /* Добавьте wrap для адаптации на маленьких экранах */
+    flex-wrap: wrap;
+    width: 89%;
+    margin: 0 auto;
 }
 .image-container-comapany{
     width: 60%;

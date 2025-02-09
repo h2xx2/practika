@@ -1,6 +1,5 @@
 .App {
-    display: inline-flex;
-    justify-content: center;  /* Выравнивание по горизонтали */
+    display: flex;
     align-items: center;
     padding-left: 20px; /* Выравнивание по вертикали */
     background: #f5f5f4;
