@@ -65,6 +65,7 @@ export default function CardRegistration() {
                 headers: {
                     "Content-Type": "application/json",
                 },
+                credentials: 'include',
                 body: JSON.stringify({ email: login, password }),
 
             });

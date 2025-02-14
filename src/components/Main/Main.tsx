@@ -11,6 +11,7 @@ import InteractiveChart from "../interacrriveGraphics/interactiveGraphics.tsx"
 import React from "react"
 import BlockAdventage from "../BlockAdventage/BlockAdventage.tsx";
 import ButtonSection from "../../ex.tsx";
+import FAQ from "../../questionsAnswer/QuestionAnswer.tsx";
 
 export default  function Main(){
     return(
@@ -228,6 +229,9 @@ export default  function Main(){
                             </div>
                         </div>
                     </div>
+                </section>
+                <section>
+                    <FAQ></FAQ>
                 </section>
 
             </main>
