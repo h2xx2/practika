@@ -15,7 +15,12 @@ import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 
 const drawerWidth = 180;
-const navItems = ['Главная', 'Обучение', 'Отзывы'];
+const navItems = [
+    { label: 'Главная', path: '/' },
+    { label: 'Обучение', path: '/' },
+    { label: 'Отзывы', path: '/review' }, // Добавляем путь к странице "Отзывы"
+];
+
 
 export default function DrawerAppBar() {
     const navigate = useNavigate();
@@ -67,9 +72,9 @@ export default function DrawerAppBar() {
             <Divider />
             <List>
                 {navItems.map((item) => (
-                    <ListItem key={item} disablePadding>
-                        <ListItemButton>
-                            <ListItemText primary={item} sx={{ textAlign: 'center' }} />
+                    <ListItem key={item.label} disablePadding>
+                        <ListItemButton onClick={() => navigate(item.path)}>
+                            <ListItemText primary={item.label} sx={{ textAlign: 'center' }} />
                         </ListItemButton>
                     </ListItem>
                 ))}
@@ -109,11 +114,16 @@ export default function DrawerAppBar() {
                     </Typography>
                     <Box sx={{ display: { xs: 'none', sm: 'flex' } }}>
                         {navItems.map((item) => (
-                            <Button key={item} sx={{ color: '#000' }}>
-                                {item}
+                            <Button
+                                key={item.label}
+                                sx={{ color: '#000' }}
+                                onClick={() => navigate(item.path)}
+                            >
+                                {item.label}
                             </Button>
                         ))}
                     </Box>
+
 
                     {isAuthenticated ? (
                         // Если пользователь авторизован, показываем кнопку "Выйти"
