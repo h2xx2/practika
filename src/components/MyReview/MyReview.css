@@ -1,0 +1,39 @@
+.review-container{
+    background-color: #f5f5f4;
+    border: 1px solid #ddd;
+    border-radius: 1.5rem;
+    padding: 20px;
+    width: 100%;
+    margin: 30px auto 30px auto;
+}
+img{
+    height: 100px;
+    margin: 0 15px;
+}
+.user-info-container{
+    display: flex;
+
+}
+.user-info{
+    flex: 1;
+    justify-items: left;
+    margin-left: 3%;
+}
+.date-info{
+    flex: 1;
+    justify-items: right;
+}
+.title{
+    text-align: left;
+    margin-left: 5%;
+    font-size: 20px;
+    font-weight: bold;
+}
+.description{
+    text-align: left;
+    font-size: 16px;
+}
+.buttons{
+    background-color: #1a1a1a;
+    color: white;
+}

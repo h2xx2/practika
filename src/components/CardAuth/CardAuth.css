@@ -35,3 +35,9 @@ body{
     font-size: 40px;
     line-height: 1vh;
 }
+.loader-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Выравнивание по вертикали на весь экран */
+}
