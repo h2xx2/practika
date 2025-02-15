@@ -1,4 +1,6 @@
-import "./Review.css";
+import "./MyReview.css";
+import {ButtonGroup} from "@mui/material";
+import Button from "@mui/material/Button";
 
 interface MediaFile {
     id: string;
@@ -26,7 +28,7 @@ interface ReviewProps {
     review: ReviewType;
 }
 
-export default function Review({ review }: ReviewProps) {
+export default function MyReview({ review }: ReviewProps) {
     return (
         <div className="review-container">
             <div className='user-info-container'>
@@ -49,6 +51,17 @@ export default function Review({ review }: ReviewProps) {
                     />
                 ))}
             </div>
+                <ButtonGroup
+                    disableElevation
+                    variant="contained"
+                    aria-label="Disabled button group"
+                    className="buttons"
+                    sx={{borderRadius: '0.5rem'}}
+                >
+                    <Button sx={{background: '#1a1a1a', borderRadius: '0.5rem'}}>Удалить</Button>
+                    <Button sx={{background: '#1a1a1a', borderRadius: '0.5rem'}}>Изменить</Button>
+                </ButtonGroup>
+
         </div>
     );
 }

@@ -3,6 +3,7 @@ import Button from "@mui/material/Button";
 import {TextField} from "@mui/material";
 import {useState} from "react";
 import { useNavigate } from "react-router-dom";
+import CircularIndeterminate from "../Loader.tsx";
 
 export default function CardAuth() {
     const [login, setLogin] = useState('');
@@ -22,6 +23,7 @@ export default function CardAuth() {
     const [buttonText, setButtonText] = useState<string>('Войти в личный кабинет');
     const [buttonColor, setButtonColor] = useState<string>('#605FFF');
     const [buttonTextColor, setButtonTextColor] = useState<string>('#fff');
+    const [isLOadding, setIsLOadding] = useState(false);
 
     // Обработчик нажатия на кнопку
     const handleLogin = () => {
@@ -57,6 +59,7 @@ export default function CardAuth() {
 
     // Функция для отправки данных на сервер
     const sendDataToServer = async (login: string, password: string) => {
+        setIsLOadding(true);
         try {
             const response = await fetch("http://localhost:3000/api/login", {
                 method: "POST",
@@ -87,50 +90,60 @@ export default function CardAuth() {
             setButtonColor("#FFB2B2");
             setButtonTextColor("#BF3939");
         }
+        finally {
+            setIsLOadding(false);
+        }
     };
 
 
     return (
         <>
             <main>
-                <h3 className='head-title'>
-                    Вход
-                </h3>
-                <div className='start-container'>
-                    <div className='login-container'>
-                        <TextField id="outlined-basic"
-                                   label="Логин"
-                                   variant="outlined"
-                                   className="login-input"
-                                   onChange={handleLoginChange}/>
+                {isLOadding ? (
+                    <div className="loader-container">
+                        <CircularIndeterminate /> {/* Отображаем индикатор загрузки */}
+                    </div>
+                ) : (
+                        <><h3 className='head-title'>
+                            Вход
+                        </h3>
+                            <div className='start-container'>
+                                <div className='login-container'>
+                                    <TextField id="outlined-basic"
+                                               label="Логин"
+                                               variant="outlined"
+                                               className="login-input"
+                                               onChange={handleLoginChange}/>
 
-                    </div>
-                    <div className='password-container'>
-                        <TextField
-                            id="outlined-password-input"
-                            label="Пароль"
-                            type="password"
-                            autoComplete="current-password"
-                            className="password-input"
-                            onChange={handlePasswordChange}
-                        />
-                    </div>
-                    <Button
-                        variant="contained"
-                        className="button-auth"
-                        sx={{ fontSize: '14px', backgroundColor: buttonColor, color: buttonTextColor }}
-                        onClick={handleLogin}
-                    >
-                        {buttonText}
-                    </Button>
-                    <div className='img-container'>
-                        <a href='http://localhost:5173/registration'>
-                            Регистрация
-                        </a>
-                    </div>
-                    <a/>
-                    <a/>
-                </div>
+                                </div>
+                                <div className='password-container'>
+                                    <TextField
+                                        id="outlined-password-input"
+                                        label="Пароль"
+                                        type="password"
+                                        autoComplete="current-password"
+                                        className="password-input"
+                                        onChange={handlePasswordChange}/>
+                                </div>
+                                <Button
+                                    variant="contained"
+                                    className="button-auth"
+                                    sx={{fontSize: '14px', backgroundColor: buttonColor, color: buttonTextColor}}
+                                    onClick={handleLogin}
+                                >
+                                    {buttonText}
+                                </Button>
+                                <div className='img-container'>
+                                    <a href='http://localhost:5173/registration'>
+                                        Регистрация
+                                    </a>
+                                </div>
+                                <a/>
+                                <a/>
+                            </div>
+                        </>
+                        )
+                }
             </main>
 
         </>
