@@ -35,6 +35,7 @@ export default function Reviews() {
     const [filter, setFilter] = useState("all");
     const [isAuthenticated, setIsAuthenticated] = useState(false);
     const [loading, setLoading] = useState(false);
+    const [, setSelectedReview] = useState<string | null>(null);
 
     const navigate = useNavigate();
 
@@ -71,6 +72,10 @@ export default function Reviews() {
         }
     };
 
+    const handleDeleteReview = (id: string) => {
+        setReviews(prevReviews => prevReviews.filter(review => review.id !== id));
+    };
+
     // Проверка авторизации (например, через токен в cookies)
     useEffect(() => {
         const token = document.cookie.replace('refreshToken=', ''); // Замените на проверку актуального токена
@@ -80,6 +85,12 @@ export default function Reviews() {
             setIsAuthenticated(false);
         }
     }, []);
+
+    const handleSelectReview = (id: string) => {
+        setSelectedReview(id);
+        console.log("Выбран отзыв с id:", id);
+    };
+
 
     // Обновление данных при изменении фильтра
     useEffect(() => {
@@ -141,7 +152,12 @@ export default function Reviews() {
 
                         reviews.map((review) =>
                             filter === "my" && isAuthenticated ? (
-                                <MyReview key={review.id} review={review} /> // Для "моих" отзывов
+                                <MyReview
+                                    key={review.id}
+                                    review={review}
+                                    onSelectReview={handleSelectReview}
+                                    onDelete={handleDeleteReview} // Передаем функцию в MyReview
+                                />
                             ) : (
                                 <Review key={review.id} review={review} /> // Для всех отзывов
                             )

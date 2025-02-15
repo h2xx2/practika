@@ -5,6 +5,7 @@ import Auth from "./page/Auth.tsx";
 import Registration from "./page/Registration.tsx";
 import Reviews from "./page/Reviews.jsx";
 import CreateReview from "./page/CreateReview/CreateReview.tsx";
+import UpdateReview from "./page/UpdateReview/UpdateReview.tsx";
 
 function App() {
     return (
@@ -15,6 +16,7 @@ function App() {
                 <Route path="/registration" element={<Registration />} />
                 <Route path="/review" element={<Reviews />} />
                 <Route path="/createreview" element={<CreateReview />} />
+                <Route path="/updatereview/:id" element={<UpdateReview />} />
             </Routes>
         </BrowserRouter>
     );
