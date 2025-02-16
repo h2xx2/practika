@@ -91,16 +91,12 @@ export default function UpdateReview() {
         setImages(images.filter((_, i) => i !== index));
     };
 
-    // Функция для удаления существующего изображения
     const handleExistingImageRemove = (index: number) => {
         const imageToDelete = existingImages[index];
-        // Отправляем запрос на удаление изображения
         deleteImageFromStorage(imageToDelete.url);
-        // Убираем изображение из состояния
         setExistingImages(existingImages.filter((_, i) => i !== index));
     };
 
-    // Функция для удаления изображения из Supabase Storage
     const deleteImageFromStorage = async (url: string) => {
         try {
             const response = await fetch(`http://localhost:3000/api/delete-image`, {
@@ -109,9 +105,10 @@ export default function UpdateReview() {
                     "Content-Type": "application/json",
                     "Authorization": `Bearer ${document.cookie.replace('refreshToken=', '')}`
                 },
-                body: JSON.stringify({ url }),
+                body: JSON.stringify({ url }),  // Обратите внимание на JSON.stringify
                 credentials: "include"
             });
+
 
             if (!response.ok) {
                 throw new Error("Ошибка при удалении изображения");
@@ -165,6 +162,8 @@ export default function UpdateReview() {
             setLoading(false); // Останавливаем индикатор загрузки
         }
     };
+
+
 
     // Закрытие уведомления Snackbar
     const handleCloseSnackbar = () => {
