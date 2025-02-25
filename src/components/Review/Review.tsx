@@ -45,7 +45,7 @@ export default function Review({ review }: ReviewProps) {
                         key={file.id}
                         src={file.url}
                         alt={file.file_type}
-                        className="media-image"
+                        className="img"
                     />
                 ))}
             </div>
