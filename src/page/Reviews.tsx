@@ -131,16 +131,19 @@ export default function Reviews() {
                 </aside>
                 <section className="reviews-list">
                     <div style={{ display: 'flex', justifyContent: 'flex-end', marginTop: '20px' }}>
-                        <Button
-                            variant="outlined"
-                            sx={{
-                                color: '#1a1a1a',
-                                borderColor: '#1a1a1a',
-                            }}
-                            onClick={() => navigate('/createreview')}
-                        >
-                            Создать отзыв
-                        </Button>
+                        {isAuthenticated ? (
+                            <Button
+                                variant="outlined"
+                                sx={{
+                                    color: '#1a1a1a',
+                                    borderColor: '#1a1a1a',
+                                }}
+                                onClick={() => navigate('/createreview')}
+                            >
+                                Создать отзыв
+                            </Button>
+                        ): null}
+
                     </div>
                     {loading ? (
                         <div className="loader-container">
