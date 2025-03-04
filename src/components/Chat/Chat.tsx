@@ -1,53 +1,42 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import ChatIcon from '@mui/icons-material/Chat';
 import SendIcon from '@mui/icons-material/Send';
 import './Chat.css';
 
-// Функция для создания нового WebSocket соединения
-const createWebSocket = () => {
-
-    const ws = new WebSocket('ws://localhost:8000/ws');  // Подключение к WebSocket
-    ws.onopen = () => {
-        console.log('WebSocket подключен');
-    };
-
-    ws.onerror = (error) => {
-        console.error('Ошибка WebSocket:', error);
-    };
-
-    ws.onmessage = (event) => {
-        console.log('Сообщение от сервера:', event.data);
-        // Здесь вы можете обновить состояние или выполнить другие действия с полученными данными
-    };
-
-    ws.onclose = () => {
-        console.log('WebSocket соединение закрыто');
-    };
-
-
-    return ws;
-};
+// WebSocket URL
+const WS_URL = 'ws://localhost:8000/ws';
 
 const ChatWidget = () => {
     const [isOpen, setIsOpen] = useState(false);
     const [messages, setMessages] = useState<string[]>([]);
     const [inputMessage, setInputMessage] = useState('');
-    const [socket, setSocket] = useState<WebSocket | null>(null);
+    const socketRef = useRef<WebSocket | null>(null);
 
     useEffect(() => {
-        // Создаем WebSocket соединение при монтировании компонента
-        const ws = createWebSocket();
-        setSocket(ws);
+        // Открываем WebSocket соединение один раз
+        socketRef.current = new WebSocket(WS_URL);
 
-        // Обработчик входящих сообщений
-        ws.onmessage = (event) => {
-            const data = event.data;
-            setMessages((prev) => [...prev, data]);
+        socketRef.current.onopen = () => {
+            console.log('WebSocket подключен');
         };
 
-        // Очистка при размонтировании компонента
+        socketRef.current.onerror = (error) => {
+            console.error('Ошибка WebSocket:', error);
+        };
+
+        socketRef.current.onmessage = (event) => {
+            console.log('Сообщение от сервера:', event.data);
+            setMessages((prev) => [...prev, event.data]);
+        };
+
+        socketRef.current.onclose = () => {
+            console.log('WebSocket соединение закрыто');
+        };
+
         return () => {
-            if (ws) ws.close();
+            if (socketRef.current) {
+                socketRef.current.close();
+            }
         };
     }, []);
 
@@ -56,12 +45,12 @@ const ChatWidget = () => {
     };
 
     const sendMessage = () => {
-        if (inputMessage.trim() && socket && socket.readyState === WebSocket.OPEN) {
-            socket.send(inputMessage);  // Отправляем сообщение через WebSocket
-            setMessages((prev) => [...prev, inputMessage]);
+        if (inputMessage.trim() && socketRef.current && socketRef.current.readyState === WebSocket.OPEN) {
+            socketRef.current.send(inputMessage);
+            setMessages((prev) => [...prev, `Вы: ${inputMessage}`]);
             setInputMessage('');
         } else {
-            console.error("WebSocket не открыт или закрыт, невозможно отправить сообщение");
+            console.error("WebSocket не подключен");
         }
     };
 
@@ -76,10 +65,10 @@ const ChatWidget = () => {
                     <div className="chat-messages">
                         {messages.length === 0 ? (
                             <div className="chat-container">
-                                <div className="button-message" onClick={() => setMessages(prev => [...prev, "Привет"])}>
+                                <div className="button-message" onClick={() => setMessages(prev => [...prev, "Привет! Какой курс вас интересует?"])}>
                                     <img src="src/assets/chat.svg" className="chat-start-message" />
                                     <p className='title-text'>Возникли вопросы?</p>
-                                    <p className='text-description'>Спросите у консультанта или нажмите сверху</p>
+                                    <p className='text-description'>Спросите у консультанта</p>
                                 </div>
                             </div>
                         ) : (
