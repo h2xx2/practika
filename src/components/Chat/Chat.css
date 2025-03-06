@@ -11,7 +11,7 @@
     border-radius: 50%;
     overflow: hidden;
     transition: all 0.3s ease;
-    z-index: 9999;  /* Поверх всего контента */
+    z-index: 9999;
 }
 
 .chat-widget.open {
@@ -44,25 +44,64 @@
     background: white;
     margin-bottom: 10px;
     display: flex;
-    flex-direction: column; /* Сообщения идут в столбик */
-    align-items: flex-end; /* Выравнивание сообщений по правому краю */
-    scrollbar-width: none; /* Для Firefox */
-    -ms-overflow-style: none; /* Для Internet Explorer и Edge */
+    flex-direction: column;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
 }
 
 .chat-messages::-webkit-scrollbar {
-    display: none; /* Для Chrome, Safari и Opera */
+    display: none;
 }
 
 .chat-message {
-    display: block; /* Сообщения на новой строке */
     padding: 8px 15px;
     margin: 5px 0;
-    background: #5eacff;
     border-radius: 10px;
+    max-width: 70%;
+    word-wrap: break-word;
+}
+
+/* Сообщения пользователя справа */
+.chat-message-user {
+    background: #007bff;
     color: white;
-    max-width: 70%; /* Чтобы сообщения не растягивались на весь экран */
-    word-wrap: break-word; /* Перенос длинных слов */
+    align-self: flex-end;
+    text-align: right;
+}
+
+/* Сообщения сервера слева */
+.chat-message-server {
+    background: #f1f1f1;
+    color: black;
+    align-self: flex-start;
+    text-align: left;
+}
+
+/* Индикатор загрузки (анимация точек) */
+.typing-indicator {
+    display: flex;
+    gap: 3px;
+    padding: 8px 15px;
+    background: #f1f1f1;
+    border-radius: 10px;
+}
+
+.typing-indicator span {
+    width: 6px;
+    height: 6px;
+    background: gray;
+    border-radius: 50%;
+    opacity: 0.3;
+    animation: typing 1.5s infinite ease-in-out;
+}
+
+.typing-indicator span:nth-child(1) { animation-delay: 0s; }
+.typing-indicator span:nth-child(2) { animation-delay: 0.3s; }
+.typing-indicator span:nth-child(3) { animation-delay: 0.6s; }
+
+@keyframes typing {
+    0%, 100% { opacity: 0.3; transform: scale(1); }
+    50% { opacity: 1; transform: scale(1.2); }
 }
 
 .chat-input {
@@ -86,36 +125,40 @@
 .chat-send-button:hover {
     background-color: #3b3b3b;
 }
-.chat-input-container{
+
+.chat-input-container {
     display: flex;
 }
+
 .chat-container {
     display: flex;
-    flex-direction: column;  /* Расположить элементы вертикально */
-    align-items: center;      /* Центрировать по горизонтали */
-    justify-content: center;  /* Центрировать по вертикали */
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     height: 100%;
-    width: 100%;/* Растянуть контейнер */
-    text-align: center;       /* Выравнивание текста */
+    width: 100%;
+    text-align: center;
 }
 
 .chat-start-message {
-    max-width: 50%;    /* Ограничение по ширине */
-    height: auto;      /* Автоматическая высота */
+    max-width: 50%;
+    height: auto;
 }
-.button-message{
+
+.button-message {
     background: #f7f7f7;
     border-radius: 0.7rem;
     padding-top: 7px;
 }
-.title-text{
+
+.title-text {
     font-family: 'Manrope', sans-serif;
     font-weight: bold;
     margin: 5px 0 2px 0;
 }
-.text-description{
+
+.text-description {
     font-family: 'Manrope', sans-serif;
     margin: 3px 0 8px 0;
     font-size: 12px;
 }
-

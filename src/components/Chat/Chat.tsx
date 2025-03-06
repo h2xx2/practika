@@ -3,17 +3,16 @@ import ChatIcon from '@mui/icons-material/Chat';
 import SendIcon from '@mui/icons-material/Send';
 import './Chat.css';
 
-// WebSocket URL
 const WS_URL = 'ws://localhost:8000/ws';
 
 const ChatWidget = () => {
     const [isOpen, setIsOpen] = useState(false);
     const [messages, setMessages] = useState<string[]>([]);
     const [inputMessage, setInputMessage] = useState('');
+    const [isTyping, setIsTyping] = useState(false);
     const socketRef = useRef<WebSocket | null>(null);
 
     useEffect(() => {
-        // Открываем WebSocket соединение один раз
         socketRef.current = new WebSocket(WS_URL);
 
         socketRef.current.onopen = () => {
@@ -27,6 +26,7 @@ const ChatWidget = () => {
         socketRef.current.onmessage = (event) => {
             console.log('Сообщение от сервера:', event.data);
             setMessages((prev) => [...prev, event.data]);
+            setIsTyping(false);
         };
 
         socketRef.current.onclose = () => {
@@ -49,6 +49,7 @@ const ChatWidget = () => {
             socketRef.current.send(inputMessage);
             setMessages((prev) => [...prev, `Вы: ${inputMessage}`]);
             setInputMessage('');
+            setIsTyping(true);
         } else {
             console.error("WebSocket не подключен");
         }
@@ -73,10 +74,18 @@ const ChatWidget = () => {
                             </div>
                         ) : (
                             messages.map((msg, index) => (
-                                <div key={index} className="chat-message">
+                                <div key={index} className={`chat-message ${msg.startsWith("Вы:") ? "chat-message-user" : "chat-message-server"}`}>
                                     {msg}
                                 </div>
                             ))
+                        )}
+
+                        {isTyping && (
+                            <div className="chat-message chat-message-server typing-indicator">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                            </div>
                         )}
                     </div>
 
